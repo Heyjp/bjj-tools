@@ -10,7 +10,7 @@ import (
 
 // Function takes a parameter which points to the location of a video
 // file and extracts the metadata file to a location
-func ExtractMetaDataFromVideo(v string, l string) string {
+func ExtractMetadataFromVideo(v string, l string) string {
 	var name = "-metadata.txt"
 
 	// Extracts the name of a file from a location string
