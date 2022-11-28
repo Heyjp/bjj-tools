@@ -15,7 +15,7 @@ func ExtractMetadataFromVideo(v string, l string) string {
 
 	// Extracts the name of a file from a location string
 	// i.e text/video.mp4
-	re := regexp.MustCompile(`[^//]*$`)
+	re := regexp.MustCompile(`[^\/]*$`)
 	res := re.FindStringSubmatch(v)
 
 	// Creates a substring of the file name excluding the file type
@@ -25,7 +25,7 @@ func ExtractMetadataFromVideo(v string, l string) string {
 	// appends "-metadata.txt" to the substring
 	metadataString := substr + name
 	// Location where the metadata will go
-	metadataLocation := l + metadataString
+	metadataLocation := l + "/" + metadataString
 
 	cmdString := fmt.Sprintf("ffmpeg -i %s -f ffmetadata %s", v, metadataLocation)
 	cmd := exec.Command(cmdString)
