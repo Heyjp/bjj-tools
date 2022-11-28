@@ -15,7 +15,7 @@ func GetDirectoryFiles() []string {
 	}
 
 	files, err := os.ReadDir(path)
-	re := regexp.MustCompile(`.*[mp4|mpeg|mkv]$`)
+	re := regexp.MustCompile(`.*\.[mp4|mpeg|mkv]+$`)
 
 	var v []string
 	for _, file := range files {
