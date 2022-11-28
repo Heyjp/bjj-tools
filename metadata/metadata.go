@@ -16,7 +16,9 @@ type Chapter struct {
 	start int
 }
 
-func main() {
+// Takes two strings for a metadata file location and a chapters
+// file location
+func MergeChaptersWithMetadata(m string, c string) {
 	if len(os.Args) < 2 {
 		fmt.Println("You must enter in a file location")
 		return
@@ -25,15 +27,14 @@ func main() {
 	if len(os.Args) != 3 {
 		log.Fatal("Please enter a metadata file and a chapters file")
 	}
-	metadata := os.Args[1]
-	chaptersFile := os.Args[2]
 
-	TestMetaData(metadata)
-	ClearVideoMetaData(metadata)
-	chapters := CreateChapters(chaptersFile)
-	WriteChaptersToMetaData(metadata, chapters)
+	TestMetaData(m)
+	ClearVideoMetaData(m)
+	chapters := CreateChapters(c)
+	WriteChaptersToMetaData(m, chapters)
 }
 
+// Checks whether the file being passed in is a metadata file
 func TestMetaData(location string) {
 	file, err := os.Open(location)
 
@@ -57,6 +58,8 @@ func TestMetaData(location string) {
 	}
 }
 
+// Searches through a file to find whether it already has chapters or
+// not if chapters are found they are removed
 func ClearVideoMetaData(location string) {
 	file, err := os.Open(location)
 
@@ -103,6 +106,8 @@ out:
 	}
 }
 
+// Returns a slice of Chapters objects for processing into the
+// metadata file
 func CreateChapters(location string) []Chapter {
 	var chapters []Chapter
 	file, err := os.Open(location)
@@ -134,6 +139,7 @@ func CreateChapters(location string) []Chapter {
 	return chapters
 }
 
+// Combines the chapters object with the metadata file
 func WriteChaptersToMetaData(metaDataFile string, chapters []Chapter) {
 
 	file, err := os.OpenFile(metaDataFile, os.O_APPEND|os.O_WRONLY, os.ModeAppend)
