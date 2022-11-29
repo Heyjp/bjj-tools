@@ -7,9 +7,10 @@ import (
 	"os"
 	"regexp"
 	"strconv"
+	"strings"
 )
 
-var timebase string = "1/1000"
+const timebase string = "1/1000"
 
 type Chapter struct {
 	title string
@@ -19,13 +20,13 @@ type Chapter struct {
 // Takes two strings for a metadata file location and a chapters
 // file location
 func MergeChaptersWithMetadata(m string, c string) {
-	if len(os.Args) < 2 {
-		fmt.Println("You must enter in a file location")
+	if len(m) == 0 {
+		log.Println("Missing metadata file")
 		return
 	}
 
-	if len(os.Args) != 3 {
-		log.Fatal("Please enter a metadata file and a chapters file")
+	if len(c) == 0 {
+		log.Fatal("Missing chapters file")
 	}
 
 	TestMetaData(m)
@@ -154,7 +155,7 @@ func WriteChaptersToMetaData(metaDataFile string, chapters []Chapter) {
 
 	for i, chapter := range chapters {
 		c += "[CHAPTER]\n"
-		c += fmt.Sprintf("TIMEBASE=%q\n", timebase)
+		c += fmt.Sprintf("TIMEBASE=%s\n", strings.Trim(timebase, "\""))
 		c += fmt.Sprintf("START=%d\n", chapter.start)
 		end := chapter.start + 1
 		if i < len(chapters)-1 {
