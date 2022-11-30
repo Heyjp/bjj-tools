@@ -40,7 +40,7 @@ func Crawl() {
 	var products []string
 	// Start the query at page 2 since we have the first page from the
 	// inital site query
-	for i := 2; i < maxPages; i++ {
+	for i := 1; i <= maxPages; i++ {
 		url := fmt.Sprintf("%s%s%d", site, q, i)
 		log.Println(url)
 
