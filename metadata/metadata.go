@@ -72,7 +72,7 @@ func ClearVideoMetaData(location string) {
 	re, err := regexp.Compile("CHAPTER")
 
 	if err != nil {
-		log.Fatal("Bad Regex")
+		log.Fatal(err)
 	}
 
 	bytesRead := 0
