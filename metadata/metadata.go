@@ -103,7 +103,7 @@ out:
 	}
 	truncErr := os.Truncate(location, size)
 	if truncErr != nil {
-		log.Fatal(err)
+		log.Fatal(truncErr)
 	}
 }
 
@@ -166,7 +166,7 @@ func WriteChaptersToMetaData(metaDataFile string, chapters []Chapter) {
 		c += "\n"
 	}
 	if _, err := file.WriteString(c); err != nil {
-		log.Println(err)
+		log.Fatal(err)
 	}
 
 }

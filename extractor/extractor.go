@@ -2,6 +2,7 @@ package extractor
 
 import (
 	"log"
+	"os"
 	"os/exec"
 	"regexp"
 	"strings"
@@ -26,14 +27,15 @@ func ExtractMetadataFromVideo(v string, l string) string {
 	// Location where the metadata will go
 	metadataLocation := l + "/" + metadataString
 
+	if _, err := os.Stat(metadataLocation); err == nil {
+		return metadataLocation
+	}
 	// runs ffmpeg taking in a file location and outputting a metadata
 	// file
-	// 	cmdString := fmt.Sprintf("-i ./%s -f ffmetadata ./metadata/%s", v, metadataString)
 	cmd := exec.Command("ffmpeg", "-i", v, "-f", "ffmetadata", metadataLocation)
 	e := cmd.Run()
 
 	if e != nil {
-		log.Println(e)
 		log.Fatal(e)
 	}
 
@@ -41,9 +43,11 @@ func ExtractMetadataFromVideo(v string, l string) string {
 }
 
 // Takes a video, metadata and output location and passes them to
-// ffmpeg
+// ffmpeg and outputs a new mp4 file
 func Combine(video string, metadata string, output string) {
-	//	cmdString := fmt.Sprintf("ffmpeg -i %s -i %s -map_metadata 1 -codec copy %s", video, metadata, output)
+	if _, err := os.Stat(output); err == nil {
+		os.Remove(output)
+	}
 	cmd := exec.Command("ffmpeg", "-i", video, "-i", metadata, "-map_metadata", "1", "-codec", "copy", output)
 	e := cmd.Run()
 

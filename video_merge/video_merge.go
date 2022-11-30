@@ -3,6 +3,7 @@ package video_merge
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	d "github.com/heyjp/bjj-tools/dircheck"
 	e "github.com/heyjp/bjj-tools/extractor"
@@ -28,8 +29,10 @@ func Merge() {
 		c := fmt.Sprintf("chapters/%s%d.txt", n, i+1)
 		m.MergeChaptersWithMetadata(metaFile, c)
 
+		s := strings.SplitN(file, ".", 2)
+
 		// Remerge metadata with the video file
-		outputLocation := fmt.Sprintf("%s/%s.mp4", o, file)
+		outputLocation := fmt.Sprintf("%s/%s.mp4", o, s[0])
 		e.Combine(file, metaFile, outputLocation)
 	}
 
