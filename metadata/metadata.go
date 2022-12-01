@@ -77,6 +77,7 @@ func ClearVideoMetaData(location string) {
 
 	bytesRead := 0
 	scanner := bufio.NewScanner(file)
+	// out: to break out of loop
 out:
 	for scanner.Scan() {
 

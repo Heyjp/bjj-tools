@@ -1,7 +1,9 @@
 package fanatics_crawler
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 	"log"
 	"os"
 	"regexp"
@@ -12,34 +14,46 @@ import (
 )
 
 func Crawl() {
-	if _, err := os.Stat("./fanatics-products.txt"); err == nil {
+	f, err := os.OpenFile("fanatics-products.txt", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0755)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer f.Close()
+
+	fileInfo, err := f.Stat()
+
+	if err != nil {
+		log.Println(err)
 		return
 	}
 
 	var site = "https://bjjfanatics.com/collections/instructional-videos"
 	var q = "?page="
 
-	respI, errI := soup.Get(site)
+	r, errI := soup.Get(site)
 
 	if errI != nil {
-		os.Exit(1)
+		log.Fatal(errI)
 	}
 
-	docI := soup.HTMLParse(respI)
-
-	div := docI.Find("div", "class", "pagination")
+	doc := soup.HTMLParse(r)
+	div := doc.Find("div", "class", "pagination")
 	spans := div.FindAll("a")
 
+	// Target the last page element in the pagination object
 	maxPages, err := strconv.Atoi(spans[len(spans)-2].Text())
 
 	if err != nil {
 		log.Println(err)
+		return
 	}
 
 	re := regexp.MustCompile(`[\w|-]*$`)
 	var products []string
-	// Start the query at page 2 since we have the first page from the
-	// inital site query
+
+	// inital site query to get the maximum amount of pages
 	for i := 1; i <= maxPages; i++ {
 		url := fmt.Sprintf("%s%s%d", site, q, i)
 		log.Println(url)
@@ -48,6 +62,7 @@ func Crawl() {
 
 		if err != nil {
 			log.Println(err)
+			return
 		}
 
 		doc := soup.HTMLParse(resp)
@@ -55,18 +70,19 @@ func Crawl() {
 
 		for _, a := range anchors {
 			s := re.FindString(a.Attrs()["href"])
+
+			if strings.Contains(s, "bundle") {
+				continue
+			}
+
+			if fileInfo.Size() > 0 && productExists(f, s) == true {
+				continue
+			}
+
 			products = append(products, s)
 		}
 
 	}
-
-	f, err := os.OpenFile("fanatics-products.txt", os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0755)
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	defer f.Close()
 
 	var c string
 
@@ -79,6 +95,27 @@ func Crawl() {
 
 	if _, errS := f.WriteString(c); errS != nil {
 		log.Println(err)
+		return
 	}
 
+}
+
+// Reads f file line by line to see if there is a matching product
+// already
+func productExists(f *os.File, p string) bool {
+
+	scanner := bufio.NewScanner(f)
+
+	for scanner.Scan() {
+		b := scanner.Text()
+		res := strings.Contains(b, p)
+		if res == true {
+			f.Seek(0, io.SeekStart)
+			return true
+		}
+
+	}
+
+	f.Seek(0, io.SeekStart)
+	return false
 }
