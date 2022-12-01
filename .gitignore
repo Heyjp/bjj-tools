@@ -17,3 +17,6 @@
 
 # Go workspace file
 go.work
+
+# Individual folders
+fanatics_crawler/*.txt
