@@ -58,10 +58,8 @@ func CheckOrCreateDirectory(location string) {
 	_, errF := os.Stat(location)
 
 	if os.IsNotExist(errF) {
-		log.Println(errF)
 		er := os.MkdirAll(location, 0755)
 		if er != nil {
-			log.Println(er)
 			log.Fatal(er)
 		}
 	}
