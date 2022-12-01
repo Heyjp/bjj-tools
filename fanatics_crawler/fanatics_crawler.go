@@ -51,10 +51,12 @@ func Crawl() {
 	}
 
 	re := regexp.MustCompile(`[\w|-]*$`)
-	var products []string
 
-	// inital site query to get the maximum amount of pages
+	// Queries each page, parses it and extracts timestamp info
+	// Then appends that data
 	for i := 1; i <= maxPages; i++ {
+		var products []string
+
 		url := fmt.Sprintf("%s%s%d", site, q, i)
 		log.Println(url)
 
@@ -82,20 +84,16 @@ func Crawl() {
 			products = append(products, s)
 		}
 
-	}
+		var c string
 
-	var c string
-
-	for _, item := range products {
-		if strings.Contains(item, "bundle") {
-			continue
+		for _, item := range products {
+			c += fmt.Sprintf("%s chapters/%s\n", item, item)
 		}
-		c += fmt.Sprintf("%s chapters/%s\n", item, item)
-	}
 
-	if _, errS := f.WriteString(c); errS != nil {
-		log.Println(err)
-		return
+		if _, errS := f.WriteString(c); errS != nil {
+			log.Println(err)
+			return
+		}
 	}
 
 }
