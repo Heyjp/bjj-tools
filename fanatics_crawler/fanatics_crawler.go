@@ -13,7 +13,12 @@ import (
 	"github.com/anaskhan96/soup"
 )
 
-func Crawl() {
+var sites = map[string]string{
+	"all": "https://bjjfanatics.com/collections/instructional-videos",
+	"new": "https://bjjfanatics.com/collections/new-releases",
+}
+
+func Crawl(siteKey string) {
 	f, err := os.OpenFile("fanatics-products.txt", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0755)
 
 	if err != nil {
@@ -29,7 +34,13 @@ func Crawl() {
 		return
 	}
 
-	var site = "https://bjjfanatics.com/collections/instructional-videos"
+	var site string
+	if key, containsKey := sites[siteKey]; containsKey {
+		site = sites[siteKey]
+	} else {
+		site = sites["all"]
+	}
+
 	var q = "?page="
 
 	r, errI := soup.Get(site)
@@ -44,6 +55,10 @@ func Crawl() {
 
 	// Target the last page element in the pagination object
 	maxPages, err := strconv.Atoi(spans[len(spans)-2].Text())
+
+	if containsKey {
+		maxPages = 2
+	}
 
 	if err != nil {
 		log.Println(err)

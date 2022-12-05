@@ -8,8 +8,15 @@ import (
 )
 
 func main() {
+	var siteKey string
+	if len(os.Args < 2) {
+		siteKey = "all"
+	} else {
+		siteKey = os.Args[2]
+	}
+
 	if os.Args[1] == "crawl" {
-		p.Crawl()
+		p.Crawl(siteKey)
 		return
 	}
 
@@ -18,6 +25,6 @@ func main() {
 		return
 	}
 
-	p.Crawl()
+	p.Crawl(siteKey)
 	c.LoopThroughProducts()
 }
