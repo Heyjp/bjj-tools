@@ -34,7 +34,8 @@ func PrepareTimestamps(location string) ([]Timestamp, []Errorstamp) {
 	defer file.Close()
 
 	chapterRe := regexp.MustCompile("[0-9]+")
-	chapter := chapterRe.FindAllString(location, -1)
+	cString := chapterRe.FindAllString(location, -1)
+	chapter, _ := strconv.Atoi(cString)
 
 	re := regexp.MustCompile(`(.*?)\s{1,4}(\d{0,2}?):?(\d{0,2}?):?(\d{0,2})$`)
 	re2 := regexp.MustCompile(`^(\d{1,2}):?(\d{0,2}?):?(\d{0,2})\s{1,4}(.*)`)
@@ -54,7 +55,7 @@ func PrepareTimestamps(location string) ([]Timestamp, []Errorstamp) {
 			res = re2.FindStringSubmatch(text)
 			if len(res) == 0 {
 				log.Println("neither match")
-				errorStamps = append(errorStamps, Errorstamp{text, row, strconv.Atoi(chapter)})
+				errorStamps = append(errorStamps, Errorstamp{text, row, chapter})
 				row += 1
 				continue
 			}
@@ -86,7 +87,7 @@ func PrepareTimestamps(location string) ([]Timestamp, []Errorstamp) {
 			timestamp = stampC
 
 			if err != nil {
-				errorStamps = append(errorStamps, Errorstamp{err, row, strconv.Atoi(chapter)})
+				errorStamps = append(errorStamps, Errorstamp{err, row, chapter})
 			}
 		}
 		stamps = append(stamps, timestamp)
