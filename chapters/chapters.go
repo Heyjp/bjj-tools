@@ -247,7 +247,9 @@ func incrementTimestamp(t Timestamp) (int, int, int) {
 	return h, m, s
 }
 
-func CreateErrorsFile(e []Errorstamp, file string) {
+func CreateErrorsFile(e []Errorstamp, location string) {
+
+	file := location + "errors.txt"
 
 	f, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0755)
 	if err != nil {

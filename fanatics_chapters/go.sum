@@ -15,6 +15,8 @@ github.com/heyjp/bjj-tools/chapters v0.0.0-20221206154706-6b72c114628f h1:cvvNGp
 github.com/heyjp/bjj-tools/chapters v0.0.0-20221206154706-6b72c114628f/go.mod h1:Yl8R5eRec9cTmI14v51/q4IP4r3VzvXK/oLlcFcu+jY=
 github.com/heyjp/bjj-tools/chapters v0.0.0-20221206155607-be27ac1194ad h1:LPRtMFi+YzbeA/hKSA+km/9fCjidL6DSctMbEqsfvrM=
 github.com/heyjp/bjj-tools/chapters v0.0.0-20221206155607-be27ac1194ad/go.mod h1:Yl8R5eRec9cTmI14v51/q4IP4r3VzvXK/oLlcFcu+jY=
+github.com/heyjp/bjj-tools/chapters v0.0.0-20221206155922-9a79b42e989f h1:zrIm3CiemQnPFeBdxuLf4wdvPGUw+2RgbVkev0TZBSM=
+github.com/heyjp/bjj-tools/chapters v0.0.0-20221206155922-9a79b42e989f/go.mod h1:Yl8R5eRec9cTmI14v51/q4IP4r3VzvXK/oLlcFcu+jY=
 github.com/heyjp/bjj-tools/dircheck v0.0.0-20221201200419-362005314a6b h1:JE0bMP0pUiKNdbHOCTWPkpA9LlZIp8Ig0fLlBiO/VO4=
 github.com/heyjp/bjj-tools/dircheck v0.0.0-20221201200419-362005314a6b/go.mod h1:LygmQNwMy9rp60FZ5A+9+pJ+uC0DQP+/tgSN4AspeJc=
 github.com/heyjp/bjj-tools/dircheck v0.0.0-20221201221549-98c8127b7e49 h1:PPTiTgI5AO9wY11yrG6q39vsIR0GQIVTxEyGmmWDCdE=
@@ -29,6 +31,8 @@ github.com/heyjp/bjj-tools/dircheck v0.0.0-20221206154706-6b72c114628f h1:/0KIxP
 github.com/heyjp/bjj-tools/dircheck v0.0.0-20221206154706-6b72c114628f/go.mod h1:LygmQNwMy9rp60FZ5A+9+pJ+uC0DQP+/tgSN4AspeJc=
 github.com/heyjp/bjj-tools/dircheck v0.0.0-20221206155607-be27ac1194ad h1:yx3O0SUVg7StHoYZW4GIeBLdMuPrrOOG0+RSC4gy5jY=
 github.com/heyjp/bjj-tools/dircheck v0.0.0-20221206155607-be27ac1194ad/go.mod h1:LygmQNwMy9rp60FZ5A+9+pJ+uC0DQP+/tgSN4AspeJc=
+github.com/heyjp/bjj-tools/dircheck v0.0.0-20221206155922-9a79b42e989f h1:3nsb3X+Rk9puNzVNaBXKu5dLZFG4TmrL/Ekv9VWfUeE=
+github.com/heyjp/bjj-tools/dircheck v0.0.0-20221206155922-9a79b42e989f/go.mod h1:LygmQNwMy9rp60FZ5A+9+pJ+uC0DQP+/tgSN4AspeJc=
 github.com/heyjp/bjj-tools/fanatics_crawler v0.0.0-20221201200419-362005314a6b h1:2L7ZZWg35ZzdBqset6qV9LpJCb/PYuZx0mNrhd7uUvY=
 github.com/heyjp/bjj-tools/fanatics_crawler v0.0.0-20221201200419-362005314a6b/go.mod h1:dgbUwaf67h1pI0cwtkyaJMvfKEQIkIEkzKQBUk39wwM=
 github.com/heyjp/bjj-tools/fanatics_crawler v0.0.0-20221201221549-98c8127b7e49 h1:5JgdDBCCZza4N63GxshfisLhEjlrVDDnu8yCZRrxSiI=
@@ -43,6 +47,8 @@ github.com/heyjp/bjj-tools/fanatics_crawler v0.0.0-20221206154706-6b72c114628f h
 github.com/heyjp/bjj-tools/fanatics_crawler v0.0.0-20221206154706-6b72c114628f/go.mod h1:dgbUwaf67h1pI0cwtkyaJMvfKEQIkIEkzKQBUk39wwM=
 github.com/heyjp/bjj-tools/fanatics_crawler v0.0.0-20221206155607-be27ac1194ad h1:wv5LcZDineB2mBJDp5RwlJdBJdVe58IcqhBuENJbVOc=
 github.com/heyjp/bjj-tools/fanatics_crawler v0.0.0-20221206155607-be27ac1194ad/go.mod h1:dgbUwaf67h1pI0cwtkyaJMvfKEQIkIEkzKQBUk39wwM=
+github.com/heyjp/bjj-tools/fanatics_crawler v0.0.0-20221206155922-9a79b42e989f h1:jdavV5H8Gy5/r6zyyGyKJ6Pj1qwMCb7CU0ITJ6kXFDA=
+github.com/heyjp/bjj-tools/fanatics_crawler v0.0.0-20221206155922-9a79b42e989f/go.mod h1:dgbUwaf67h1pI0cwtkyaJMvfKEQIkIEkzKQBUk39wwM=
 github.com/heyjp/bjj-tools/fanatics_search v0.0.0-20221201200419-362005314a6b h1:zan8bII8AXWF3R+Ue6TD8165fLYD0lSrhLm/nMSAbUk=
 github.com/heyjp/bjj-tools/fanatics_search v0.0.0-20221201200419-362005314a6b/go.mod h1:a2T7srvialK9utU1QsZqhqlPweTtcR3WarWIGhEwy34=
 github.com/heyjp/bjj-tools/fanatics_search v0.0.0-20221201221549-98c8127b7e49 h1:sOp4I3tKkMH5Cb45bArfy2InsrJRfXvLvwqoTmsHKm4=
@@ -57,6 +63,8 @@ github.com/heyjp/bjj-tools/fanatics_search v0.0.0-20221206154706-6b72c114628f h1
 github.com/heyjp/bjj-tools/fanatics_search v0.0.0-20221206154706-6b72c114628f/go.mod h1:a2T7srvialK9utU1QsZqhqlPweTtcR3WarWIGhEwy34=
 github.com/heyjp/bjj-tools/fanatics_search v0.0.0-20221206155607-be27ac1194ad h1:Uh5hrKZy4qaSCXlAnJpiM2a2BqR0Tu2+mOTBfalHetk=
 github.com/heyjp/bjj-tools/fanatics_search v0.0.0-20221206155607-be27ac1194ad/go.mod h1:a2T7srvialK9utU1QsZqhqlPweTtcR3WarWIGhEwy34=
+github.com/heyjp/bjj-tools/fanatics_search v0.0.0-20221206155922-9a79b42e989f h1:1jIHwNUuW3ro/KayGGRy5rZ+RDAiKvG/WXm1C46rQfE=
+github.com/heyjp/bjj-tools/fanatics_search v0.0.0-20221206155922-9a79b42e989f/go.mod h1:a2T7srvialK9utU1QsZqhqlPweTtcR3WarWIGhEwy34=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=

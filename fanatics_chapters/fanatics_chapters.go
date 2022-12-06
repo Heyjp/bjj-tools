@@ -49,8 +49,10 @@ func CreateChapters(product, location string, yt bool) {
 	for _, file := range files {
 		t, e := c.PrepareTimestamps(location + "/" + file.Name())
 		c.CreateChaptersFile(t, location+"/"+file.Name(), yt)
+
 		if len(e) > 0 {
-			c.CreateErrorsFile(e, location+"/errors/"+"errors.txt")
+			d.CheckOrCreateDirectory(location + "/errors/")
+			c.CreateErrorsFile(e, location+"/errors/")
 		}
 
 	}
