@@ -87,7 +87,7 @@ func PrepareTimestamps(location string) ([]Timestamp, []Errorstamp) {
 			timestamp = stampC
 
 			if err != nil {
-				errorStamps = append(errorStamps, Errorstamp{err.Error(), row, chapter})
+				errorStamps = append(errorStamps, Errorstamp{text, row, chapter})
 			}
 		}
 		stamps = append(stamps, timestamp)
