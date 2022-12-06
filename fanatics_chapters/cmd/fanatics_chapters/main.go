@@ -9,7 +9,7 @@ import (
 
 func main() {
 	var siteKey string
-	if len(os.Args < 2) {
+	if len(os.Args) < 2 {
 		siteKey = "all"
 	} else {
 		siteKey = os.Args[2]
