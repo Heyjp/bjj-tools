@@ -25,7 +25,7 @@ type Errorstamp struct {
 
 // Opens a text file at the location passed as an argument
 // the file is then scanned for a string resembling a time / timestamp
-func PrepareTimestamps(location string) []Timestamp {
+func PrepareTimestamps(location string) ([]Timestamp, []Errorstamp) {
 	file, err := os.Open(location)
 	if err != nil {
 		log.Fatal("failed to create %q", err)
