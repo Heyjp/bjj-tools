@@ -54,7 +54,7 @@ func PrepareTimestamps(location string) ([]Timestamp, []Errorstamp) {
 			res = re2.FindStringSubmatch(text)
 			if len(res) == 0 {
 				log.Println("neither match")
-				errorStamps = append(errorStamps, Errorstamp{text, row, chapter})
+				errorStamps = append(errorStamps, Errorstamp{text, row, strings.Atoi(chapter)})
 				row += 1
 				continue
 			}
@@ -86,7 +86,7 @@ func PrepareTimestamps(location string) ([]Timestamp, []Errorstamp) {
 			timestamp = stampC
 
 			if err != nil {
-				errorStamps = append(errorStamps, Errorstamp{err, row, chapter})
+				errorStamps = append(errorStamps, Errorstamp{err, row, strings.Atoi(chapter)})
 			}
 		}
 		stamps = append(stamps, timestamp)
@@ -181,7 +181,7 @@ func fixBadTimestamps(t []string) []string {
 
 // Compare the current Timestamp object with the previous Timestamp
 // object. If current timestamp is less than the previous do something
-func compareTimestamps(c, p Timestamp) (Timestamp, Error) {
+func compareTimestamps(c, p Timestamp) (Timestamp, error) {
 
 	cT := prepareTimestamp(c)
 	pT := prepareTimestamp(p)

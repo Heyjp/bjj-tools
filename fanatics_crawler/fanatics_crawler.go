@@ -35,8 +35,8 @@ func Crawl(siteKey string) {
 	}
 
 	var site string
-	if key, containsKey := sites[siteKey]; containsKey {
-		site = sites[siteKey]
+	if value, containsKey := sites[siteKey]; containsKey {
+		site = value
 	} else {
 		site = sites["all"]
 	}
