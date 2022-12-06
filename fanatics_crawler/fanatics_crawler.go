@@ -56,7 +56,7 @@ func Crawl(siteKey string) {
 	// Target the last page element in the pagination object
 	maxPages, err := strconv.Atoi(spans[len(spans)-2].Text())
 
-	if containsKey {
+	if site == sites["new"] {
 		maxPages = 2
 	}
 
