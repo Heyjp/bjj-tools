@@ -2,6 +2,8 @@ package chapters
 
 import (
 	"bufio"
+	"errors"
+	"fmt"
 	"log"
 	"os"
 	"regexp"
@@ -15,6 +17,12 @@ type Timestamp struct {
 	seconds string
 }
 
+type Errorstamp struct {
+	docLine string
+	row     int
+	chapter int
+}
+
 // Opens a text file at the location passed as an argument
 // the file is then scanned for a string resembling a time / timestamp
 func PrepareTimestamps(location string) []Timestamp {
@@ -25,12 +33,19 @@ func PrepareTimestamps(location string) []Timestamp {
 
 	defer file.Close()
 
-	re := regexp.MustCompile(`(.*?)\s{1,2}(\d{0,2}?):?(\d{0,2}?):?(\d{0,2})$`)
+	chapterRe := regexp.MustCompile("[0-9]+")
+	chapter := chapterRe.FindAllString(location, -1)
+
+	re := regexp.MustCompile(`(.*?)\s{1,4}(\d{0,2}?):?(\d{0,2}?):?(\d{0,2})$`)
 	re2 := regexp.MustCompile(`^(\d{1,2}):?(\d{0,2}?):?(\d{0,2})\s{1,4}(.*)`)
+
 	var stamps []Timestamp
+	var errorStamps []Errorstamp
 
 	fileScanner := bufio.NewScanner(file)
 	fileScanner.Split(bufio.ScanLines)
+	var row = 0
+
 	for fileScanner.Scan() {
 		text := fileScanner.Text()
 		res := re.FindStringSubmatch(text)
@@ -39,6 +54,8 @@ func PrepareTimestamps(location string) []Timestamp {
 			res = re2.FindStringSubmatch(text)
 			if len(res) == 0 {
 				log.Println("neither match")
+				errorStamps = append(errorStamps, Errorstamp{text, row, chapter})
+				row += 1
 				continue
 			}
 
@@ -61,13 +78,22 @@ func PrepareTimestamps(location string) []Timestamp {
 		res = fixBadTimestamps(res)
 
 		var timestamp = Timestamp{res[1], res[2], res[3], res[4]}
+
+		// Checks whether the current timestamp is later than the
+		// previous timestamp
 		if len(stamps) > 1 {
-			timestamp = compareTimestamps(timestamp, stamps[len(stamps)-1])
+			stampC, err := compareTimestamps(timestamp, stamps[len(stamps)-1])
+			timestamp = stampC
+
+			if err != nil {
+				errorStamps = append(errorStamps, Errorstamp{err, row, chapter})
+			}
 		}
 		stamps = append(stamps, timestamp)
+		row += 1
 	}
 
-	return stamps
+	return stamps, errorStamps
 }
 
 // removeEmptyStrings - Use to populate empty string values inside of an
@@ -80,6 +106,8 @@ func populateEmptyStrings(s []string) []string {
 	return r
 }
 
+// Checks whether the current timestamp is later than the previous
+// timestamp
 // Takes a slice of strings and transforms the would be time values
 func timesToStrings(r []string, s string) []string {
 	if s == "" {
@@ -153,13 +181,13 @@ func fixBadTimestamps(t []string) []string {
 
 // Compare the current Timestamp object with the previous Timestamp
 // object. If current timestamp is less than the previous do something
-func compareTimestamps(c, p Timestamp) Timestamp {
+func compareTimestamps(c, p Timestamp) (Timestamp, Error) {
 
 	cT := prepareTimestamp(c)
 	pT := prepareTimestamp(p)
 
 	if cT > pT {
-		return c
+		return c, nil
 	}
 
 	// Increment the current timestamp by the interval and then convert it
@@ -176,7 +204,7 @@ func compareTimestamps(c, p Timestamp) Timestamp {
 	c.minutes = v[1]
 	c.seconds = v[2]
 	c.title += "- [Needs Edit]"
-	return c
+	return c, errors.New(fmt.Sprintf("%s:%s:%s %s", c.hours, c.minutes, c.seconds, c.title))
 }
 
 // Creates a single timestamp value out of a timestamp object {hours,
@@ -216,4 +244,25 @@ func incrementTimestamp(t Timestamp) (int, int, int) {
 	}
 
 	return h, m, s
+}
+
+func CreateErrorsFile(e []Errorstamp, file string) {
+
+	f, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0755)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer f.Close()
+
+	var s string
+
+	s += fmt.Sprintf("[Volume %d]\n", e[0].chapter)
+	for _, t := range e {
+		s += fmt.Sprintf("row: %d, title: %s\n", t.row, t.docLine)
+	}
+
+	if _, err := f.WriteString(s); err != nil {
+		log.Println(err)
+	}
 }
