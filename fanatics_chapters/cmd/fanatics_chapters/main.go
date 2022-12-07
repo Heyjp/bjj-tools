@@ -7,7 +7,6 @@ import (
 
 	c "github.com/heyjp/bjj-tools/fanatics_chapters"
 	p "github.com/heyjp/bjj-tools/fanatics_crawler"
-	f "github.com/heyjp/bjj-tools/fanatics_search"
 )
 
 func main() {
@@ -27,15 +26,16 @@ func main() {
 		if len(os.Args) < 3 {
 			log.Fatal("Usage: main search <fanatics-product-link>")
 		}
-		product := os.Args[3]
-		folder := os.Getwd()
-		f.Search(product, folder)
+		product := os.Args[2]
+		folder, err := os.Getwd()
+		if err != nil {
+			log.Fatal(err)
+		}
+		location := folder + "/" + "chapters"
+		c.PrepareChapterFiles(product, location)
 	case "merge":
 		fmt.Println("Enter in a folder location containing videos")
 	default:
 		fmt.Println("main <search|crawl|chapters|merge>")
 	}
-
-	// p.Craw l("all")
-	// c.LoopThroughProducts()
 }

@@ -11,6 +11,9 @@ import (
 	s "github.com/heyjp/bjj-tools/fanatics_search"
 )
 
+// Reads a fanatics-products.txt file and extracting the product
+// name and folder location and transforms the scraped timestamps
+// into a useable format to be combined with a metadata file
 func LoopThroughProducts() {
 	file, err := os.Open("fanatics-products.txt")
 	if err != nil {
@@ -23,16 +26,13 @@ func LoopThroughProducts() {
 	for fileScanner.Scan() {
 		line := fileScanner.Text()
 		s := strings.Split(line, " ")
-		CreateChapters(s[0], s[1], false)
+		PrepareChapterFiles(s[0], s[1], false)
 	}
 }
 
-func CreateChapters(product, location string, yt bool) {
-	// arg - product name on bjj fanatics
-	// creates the chapters folder in the current working directory
-	// Searches bjj fantatics and returns chapters files
-	// converts chapters into useable chapters
-
+// Loops through a folder of chapter-[n].txt files and puts them in
+// a format ready to be combined with a metadata file
+func PrepareChapterFiles(product, location string, yt bool) {
 	_, errF := os.Stat(location)
 	if errF == nil {
 		return
