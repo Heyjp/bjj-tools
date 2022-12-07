@@ -3,10 +3,10 @@ module github.com/heyjp/bjj-tools/fanatics_chapters
 go 1.18
 
 require (
-	github.com/heyjp/bjj-tools/chapters v0.0.0-20221206163528-0485376e944c
-	github.com/heyjp/bjj-tools/dircheck v0.0.0-20221206163528-0485376e944c
-	github.com/heyjp/bjj-tools/fanatics_crawler v0.0.0-20221206163528-0485376e944c
-	github.com/heyjp/bjj-tools/fanatics_search v0.0.0-20221206163528-0485376e944c
+	github.com/heyjp/bjj-tools/chapters v0.0.0-20221206171431-7420d9eca0ac
+	github.com/heyjp/bjj-tools/dircheck v0.0.0-20221206171431-7420d9eca0ac
+	github.com/heyjp/bjj-tools/fanatics_crawler v0.0.0-20221206171431-7420d9eca0ac
+	github.com/heyjp/bjj-tools/fanatics_search v0.0.0-20221206171431-7420d9eca0ac
 )
 
 require (
