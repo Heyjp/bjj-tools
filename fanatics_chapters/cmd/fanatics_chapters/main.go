@@ -7,7 +7,7 @@ import (
 
 	c "github.com/heyjp/bjj-tools/fanatics_chapters"
 	p "github.com/heyjp/bjj-tools/fanatics_crawler"
-	f "github.com/heyjp/bjj-tools/fantatics_search"
+	f "github.com/heyjp/bjj-tools/fanatics_search"
 )
 
 func main() {
