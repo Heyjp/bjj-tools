@@ -32,7 +32,7 @@ func main() {
 			log.Fatal(err)
 		}
 		location := folder + "/" + "chapters"
-		c.PrepareChapterFiles(product, location)
+		c.PrepareChapterFiles(product, location, false)
 	case "merge":
 		fmt.Println("Enter in a folder location containing videos")
 	default:
