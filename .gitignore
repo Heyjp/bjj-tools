@@ -20,3 +20,4 @@ go.work
 
 # Individual folders
 fanatics_crawler/*.txt
+**/chapters

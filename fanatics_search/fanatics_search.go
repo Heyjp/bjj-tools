@@ -10,6 +10,8 @@ import (
 	"github.com/anaskhan96/soup"
 )
 
+var site = "https://bjjfanatics.com/products/"
+
 // Looks up an individual product on the fanatics site and extracts
 // the timestamp data from the page and places it into a series of chapters files
 func Search(product string, folder string) {
@@ -18,11 +20,21 @@ func Search(product string, folder string) {
 		log.Fatal("fanatics_search <product> <folder>")
 	}
 
-	var site = "https://bjjfanatics.com/products/"
-	resp, err := soup.Get(site + product)
+	if len(folder) < 1 {
+		folder = "./chapters"
+	}
+
+	productRe := regexp.MustCompile(`[\w|-]*$`)
+	matches := productRe.FindAllString(product, -1)
+
+	if len(matches) == 0 {
+		log.Fatal("Please enter a valid product: https://bjjfanatics.com/products/<product>")
+	}
+
+	resp, err := soup.Get(site + matches[0])
 
 	if err != nil {
-		os.Exit(1)
+		log.Fatal(err)
 	}
 
 	doc := soup.HTMLParse(resp)
@@ -65,6 +77,7 @@ func Search(product string, folder string) {
 		if err != nil {
 			log.Fatal(err)
 		}
+
 		defer file.Close()
 
 		var chapterString string
