@@ -2,7 +2,9 @@ package video_merge
 
 import (
 	"fmt"
+	"log"
 	"os"
+	"regexp"
 	"strings"
 
 	d "github.com/heyjp/bjj-tools/dircheck"
@@ -12,6 +14,39 @@ import (
 
 func Merge() {
 	f := d.GetDirectoryFiles()
+
+	// Find the directory with the chapters files "chapters-1.txt
+	// chapters-2.txt
+	var chapterDirectory string
+	res, _ := os.ReadDir(".")
+
+	for _, file := range res {
+		if file.IsDir() {
+			if file.Name() == "chapters" {
+				chapterDirectory = file.Name()
+				break
+			}
+
+			dir, _ := os.ReadDir(file.Name())
+
+			var matches []string
+			for _, subFile := range dir {
+				if matched, _ := regexp.MatchString(`chapters*.txt`, subFile.Name()); matched {
+					matches = append(matches, subFile.Name())
+				}
+			}
+
+			if len(f) == len(matches) {
+				chapterDirectory = file.Name()
+				break
+			}
+		}
+	}
+
+	if chapterDirectory == "" {
+		log.Fatal("Chapter Directory not found")
+	}
+
 	// d.SortStrings(f)
 	d.CheckOrCreateDirectory("metadata")
 
@@ -26,7 +61,7 @@ func Merge() {
 	for i, file := range f {
 		metaFile := e.ExtractMetadataFromVideo(file, l)
 		// Combine metadata with chapters
-		c := fmt.Sprintf("chapters/%s%d.txt", n, i+1)
+		c := fmt.Sprintf("%s/%s%d.txt", chapterDirectory, n, i+1)
 		m.MergeChaptersWithMetadata(metaFile, c)
 
 		s := strings.SplitN(file, ".", 2)
