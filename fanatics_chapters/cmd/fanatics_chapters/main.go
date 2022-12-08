@@ -11,7 +11,7 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		log.Fatal("Usage: main <crawl|chapters|search|merge>")
+		log.Fatal("Usage: main <crawl|chapters|search>")
 	}
 	switch os.Args[1] {
 	case "crawl":
@@ -33,8 +33,8 @@ func main() {
 		}
 		location := folder + "/" + "chapters"
 		c.PrepareChapterFiles(product, location, false)
-	case "merge":
-		fmt.Println("Enter in a folder location containing videos")
+	// case "merge":
+	// fmt.Println("Enter in a folder location containing videos")
 	default:
 		fmt.Println("main <search|crawl|chapters|merge>")
 	}
