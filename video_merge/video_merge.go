@@ -14,7 +14,6 @@ import (
 
 func Merge() {
 	f := d.GetDirectoryFiles()
-
 	// Find the directory with the chapters files "chapters-1.txt
 	// chapters-2.txt
 	var chapterDirectory string
@@ -27,11 +26,15 @@ func Merge() {
 				break
 			}
 
-			dir, _ := os.ReadDir(file.Name())
+			dir, err := os.ReadDir(file.Name())
+
+			if err != nil {
+				log.Fatal(err)
+			}
 
 			var matches []string
 			for _, subFile := range dir {
-				if matched, _ := regexp.MatchString(`chapters*.txt`, subFile.Name()); matched {
+				if matched, _ := regexp.MatchString(`chapter.*\.txt`, subFile.Name()); matched {
 					matches = append(matches, subFile.Name())
 				}
 			}
@@ -44,7 +47,7 @@ func Merge() {
 	}
 
 	if chapterDirectory == "" {
-		log.Fatal("Chapter Directory not found")
+		log.Fatal("Chapter directory not found")
 	}
 
 	// d.SortStrings(f)
@@ -69,6 +72,11 @@ func Merge() {
 		// Remerge metadata with the video file
 		outputLocation := fmt.Sprintf("%s/%s.mp4", o, s[0])
 		e.Combine(file, metaFile, outputLocation)
+	}
+
+	err := os.RemoveAll("metadata")
+	if err != nil {
+		log.Fatal(err)
 	}
 
 	fmt.Println("Complete")
