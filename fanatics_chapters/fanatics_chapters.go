@@ -51,8 +51,7 @@ func PrepareChapterFiles(product, location string, yt bool) {
 		c.CreateChaptersFile(t, location+"/"+file.Name(), yt)
 
 		if len(e) > 0 {
-			d.CheckOrCreateDirectory(location + "/errors/")
-			c.CreateErrorsFile(e, location+"/errors/")
+			c.CreateErrorsFile(e, location)
 		}
 
 	}

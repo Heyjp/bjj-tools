@@ -38,7 +38,9 @@ func Search(product string, folder string) {
 	}
 
 	doc := soup.HTMLParse(resp)
-	rows := doc.FindAll("tbody")
+
+	section := doc.Find("section", "id", "contents-no-mobile")
+	rows := section.FindAll("tbody")
 
 	re, _ := regexp.Compile(`^[^\d]*([\d:\.]+)`)
 	wordRe, _ := regexp.Compile(`[a-zA-Z]+`)
@@ -82,7 +84,7 @@ func Search(product string, folder string) {
 
 		var chapterString string
 		for _, chapter := range c {
-			chapterString += strings.Join(chapter, " ")
+			chapterString += strings.Join(chapter, ",")
 			chapterString += "\n"
 		}
 		_, errF := file.WriteString(chapterString)
