@@ -14,6 +14,8 @@ github.com/heyjp/bjj-tools/dircheck v0.0.0-20221130104258-35ef55e3e85c h1:KLpEIM
 github.com/heyjp/bjj-tools/dircheck v0.0.0-20221130104258-35ef55e3e85c/go.mod h1:LygmQNwMy9rp60FZ5A+9+pJ+uC0DQP+/tgSN4AspeJc=
 github.com/heyjp/bjj-tools/dircheck v0.0.0-20221130161424-6bd1f30d1d09 h1:2+YFc61bjosdJwiA/gxISEysQ11t+mE1T80NyfNROXM=
 github.com/heyjp/bjj-tools/dircheck v0.0.0-20221130161424-6bd1f30d1d09/go.mod h1:LygmQNwMy9rp60FZ5A+9+pJ+uC0DQP+/tgSN4AspeJc=
+github.com/heyjp/bjj-tools/dircheck v0.0.0-20221209153242-5ea34264d268 h1:OpNhZMQeLO2sucvX8VQhYWnJIspTwkDzuw0LtzqHYZk=
+github.com/heyjp/bjj-tools/dircheck v0.0.0-20221209153242-5ea34264d268/go.mod h1:LygmQNwMy9rp60FZ5A+9+pJ+uC0DQP+/tgSN4AspeJc=
 github.com/heyjp/bjj-tools/extractor v0.0.0-20221128142339-f5aa2ee0e211 h1:+b5xlfCHy0a+n97cvqzEG5Xb379SDnCN7+P5ENjBWNw=
 github.com/heyjp/bjj-tools/extractor v0.0.0-20221128142339-f5aa2ee0e211/go.mod h1:dIpPhw/VJz+B8K2Qvr14sLNKkIl/+S3fX1g4oHOVhF8=
 github.com/heyjp/bjj-tools/extractor v0.0.0-20221128192804-c259c70056eb h1:/HPhplUfjCuXdCOwqnh6kpGQlzvpuA0FxRjc15u/RgA=
@@ -30,6 +32,8 @@ github.com/heyjp/bjj-tools/extractor v0.0.0-20221130104258-35ef55e3e85c h1:ccj9c
 github.com/heyjp/bjj-tools/extractor v0.0.0-20221130104258-35ef55e3e85c/go.mod h1:dIpPhw/VJz+B8K2Qvr14sLNKkIl/+S3fX1g4oHOVhF8=
 github.com/heyjp/bjj-tools/extractor v0.0.0-20221130161424-6bd1f30d1d09 h1:iqUbZ85JuH1gnatbGSmLNc7nWX2d2mUucht+tkWGqtg=
 github.com/heyjp/bjj-tools/extractor v0.0.0-20221130161424-6bd1f30d1d09/go.mod h1:dIpPhw/VJz+B8K2Qvr14sLNKkIl/+S3fX1g4oHOVhF8=
+github.com/heyjp/bjj-tools/extractor v0.0.0-20221209153242-5ea34264d268 h1:iw/W/utkfLzFxRT0DaLVN/wxClpg/CvrvObzWFty0/0=
+github.com/heyjp/bjj-tools/extractor v0.0.0-20221209153242-5ea34264d268/go.mod h1:dIpPhw/VJz+B8K2Qvr14sLNKkIl/+S3fX1g4oHOVhF8=
 github.com/heyjp/bjj-tools/metadata v0.0.0-20221128142339-f5aa2ee0e211 h1:aGTbNUwibeGpf8DfhgP39+XCDN/ZKyvJNlnR5t+WIos=
 github.com/heyjp/bjj-tools/metadata v0.0.0-20221128142339-f5aa2ee0e211/go.mod h1:1zpj7ssGuQNljkclyWRyf2Ij/InftdWyTxufE4J6hqY=
 github.com/heyjp/bjj-tools/metadata v0.0.0-20221128192804-c259c70056eb h1:mCm8q3T8DUUsTZo3wZxA+jj4f7tJN0pVn6tTcFOIYwc=
@@ -40,3 +44,5 @@ github.com/heyjp/bjj-tools/metadata v0.0.0-20221130104258-35ef55e3e85c h1:UTXe1I
 github.com/heyjp/bjj-tools/metadata v0.0.0-20221130104258-35ef55e3e85c/go.mod h1:1zpj7ssGuQNljkclyWRyf2Ij/InftdWyTxufE4J6hqY=
 github.com/heyjp/bjj-tools/metadata v0.0.0-20221130161424-6bd1f30d1d09 h1:rcd63wfWT/nPbWIB7A7lGpKU+fjtFeG0iSgpMA9JAvc=
 github.com/heyjp/bjj-tools/metadata v0.0.0-20221130161424-6bd1f30d1d09/go.mod h1:1zpj7ssGuQNljkclyWRyf2Ij/InftdWyTxufE4J6hqY=
+github.com/heyjp/bjj-tools/metadata v0.0.0-20221209153242-5ea34264d268 h1:cI8w2Wf0YmDahVnmDSitHdSjWTw8itifklwqwIDSk4M=
+github.com/heyjp/bjj-tools/metadata v0.0.0-20221209153242-5ea34264d268/go.mod h1:1zpj7ssGuQNljkclyWRyf2Ij/InftdWyTxufE4J6hqY=
