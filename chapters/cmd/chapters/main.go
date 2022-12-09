@@ -4,15 +4,12 @@ import (
 	"os"
 
 	c "github.com/heyjp/bjj-tools/chapters"
-	d "github.com/heyjp/bjj-tools/dircheck"
 )
 
 func main() {
-	timestamps, errorStamps := c.PrepareTimestamps(os.Args[1])
-	c.CreateChaptersFile(timestamps, "chapters", false)
+	t, errorStamps := c.PrepareTimestamps(os.Args[1])
+	c.CreateChaptersFile(t, os.Args[1], false)
 	if len(errorStamps) > 0 {
-		location := "chapters/errors/"
-		d.CheckOrCreateDirectory(location)
-		c.CreateErrorsFile(errorStamps, location)
+		c.CreateErrorsFile(errorStamps, os.Args[1])
 	}
 }

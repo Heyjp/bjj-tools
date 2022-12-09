@@ -6,8 +6,12 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 	"regexp"
 	"strconv"
+	"strings"
+
+	d "github.com/heyjp/bjj-tools/dircheck"
 )
 
 type Timestamp struct {
@@ -33,12 +37,13 @@ func PrepareTimestamps(location string) ([]Timestamp, []Errorstamp) {
 
 	defer file.Close()
 
+	// Extract the file index
 	chapterRe := regexp.MustCompile("[0-9]+")
 	cString := chapterRe.FindAllString(location, -1)
 	chapter, _ := strconv.Atoi(cString[0])
 
-	re := regexp.MustCompile(`(.*?)\s{1,4}(\d{0,2}?):?(\d{0,2}?):?(\d{0,2})$`)
-	re2 := regexp.MustCompile(`^(\d{1,2}):?(\d{0,2}?):?(\d{0,2})\s{1,4}(.*)`)
+	re := regexp.MustCompile(`(.*?)[,](\d{0,2}?):?(\d{0,2}?):?(\d{1,2})$`)
+	re2 := regexp.MustCompile(`^(\d{1,2}):?(\d{0,2}?):?(\d{0,2})[,](.*)`)
 
 	var stamps []Timestamp
 	var errorStamps []Errorstamp
@@ -50,11 +55,14 @@ func PrepareTimestamps(location string) ([]Timestamp, []Errorstamp) {
 	for fileScanner.Scan() {
 		text := fileScanner.Text()
 		res := re.FindStringSubmatch(text)
+
+		// Occasionally the format of "<title>,<timestamp>" is reversed to
+		// "<timestamp>,<title>" on
+		// the crawled site. If so use fallback regex
 		if len(res) == 0 {
-			// If the previous regex does not match use fallback
 			res = re2.FindStringSubmatch(text)
+
 			if len(res) == 0 {
-				log.Println("neither match")
 				errorStamps = append(errorStamps, Errorstamp{text, row, chapter})
 				row += 1
 				continue
@@ -130,6 +138,7 @@ func timesToStrings(r []string, s string) []string {
 func CreateChaptersFile(t []Timestamp, file string, forYt bool) {
 
 	f, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0755)
+
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -171,7 +180,7 @@ func fixBadTimestamps(t []string) []string {
 	minutes := strconv.Itoa(m)
 	seconds := strconv.Itoa(s)
 
-	if h > 3 {
+	if h > 4 {
 		hours = strconv.Itoa(0)
 		minutes = strconv.Itoa(h)
 		seconds = strconv.Itoa(m)
@@ -247,11 +256,26 @@ func incrementTimestamp(t Timestamp) (int, int, int) {
 	return h, m, s
 }
 
-func CreateErrorsFile(e []Errorstamp, location string) {
+func CreateErrorsFile(e []Errorstamp, chaptersFileLocation string) {
+	// Extract file from location
+	fileRe := regexp.MustCompile(`[^\/]*$`)
+	fMatch := fileRe.FindAllString(chaptersFileLocation, -1)
 
-	file := location + "errors.txt"
+	if fMatch == nil {
+		log.Fatal("No Match")
+	}
 
-	f, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0755)
+	file := fMatch[0]
+	// Make sure the errors directory exists
+	dir := chaptersFileLocation[0 : len(chaptersFileLocation)-len(file)]
+	dir += "errors"
+	d.CheckOrCreateDirectory(dir)
+
+	// Create the errors file location ready for creation
+	file = strings.TrimSuffix(file, filepath.Ext(file))
+	file = dir + "/" + file + "-errors.txt"
+
+	f, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0666)
 	if err != nil {
 		log.Fatal(err)
 	}
