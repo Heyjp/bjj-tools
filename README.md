@@ -6,9 +6,7 @@ setup is that you have a number of timestamps in each video which
 correspond with different techniques. Purchased videos can be downloaded
 but these videos do not come with the timestamps so watching offline or
 on desktop the experience is a lot worse compared to their mobile app
-or website. Ontop of that rarely are instructionals made for a person to
-sit through them in a single sitting, instead a practitioner will watch
-a limited amount of techniques and drill accordingly or make notes.
+or website.
 
 `.mp4` files have chapter functionality which allow the user to jump
 between points in the file quickly. These scripts are designed to help
@@ -38,35 +36,43 @@ For using Video merge:
 5) Run `video-merge.exe`
 
 
-## Other Scripts
-
-### Fanatics Search<https://github.com/heyjp/bjj-tools/fanatics_search>
-
-When passed in a product name `power-ride-by-craig-jones` on bjjfanatics
-and a download location will extract timestamps from the bjjfanatics
-website and convert them into a text file named `chapters-<n>.txt`
-
-
-### Fanatics Crawler<https://github.com/heyjp/bjj-tools/fanatics_crawler>
-
-When run crawls the fanatics website and returns a document with the
-links to the products as well as the folder you wish save the product
-timestamps in.
-
-
 ### Fanatics Chapters<https://github.com/heyjp/bjj-tools/fanatics_search>
 
-Takes the file created by the fanatics Crawler and retrieves the
-timestamps for each product and places them into the designated folder.
+A collection of scripts for collecting timestamps.
+
+Usage: 
+`$ main <crawl|chapters|search>`
 
 
-### Misc
+#### Crawl
 
-- Metadata - Prepares the metadata file, handles clearing old chapters
-  if they exist and adding new ones.
-- Chapters - Prepares the chapters file/s after receiving data from the
-  web search
-- Dircheck - Tools for getting directory / file data.
-- Extractor - Tool for using ffmpeg
+Command will crawl through the site and will create a text file with two
+values. `<product name> <location for chapters file>`. You can choose
+between crawling the entire site and retrieving every product or
+crawling the first couple of pages  of their new products lineup. 
 
-Prepares
+`$ main crawl <all|new>`
+
+If a product name exists already it will not be written over.
+
+
+#### chapters
+
+If a `fanatics-products.txt` file has been created the `chapters` option
+will then create a `chapters/` folder for each listed product.
+
+`$ main chapters`
+
+
+#### search
+
+Like chapters, creates a chapters folder with timestamps but targets a
+specific product entered by the user. 
+
+`$ main search <product url>`
+
+```
+
+
+```
+
