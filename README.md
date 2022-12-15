@@ -11,30 +11,6 @@ between points in the video quickly. These scripts are designed to
 create / merge timestamps with their related videos to help the user have a better learning experience.
 
 
-### [Video
-Merge](https://github.com/Heyjp/bjj-tools/tree/main/video_merge)
-
-Utilizes the `extractor` module alongside ffmpeg to extract the metadata
-from the given video file location, updates the metadata to include
-timestamps from the given chapters folder and then combines the updated
-metadata file with chapters and merges with the video file to create a
-brand new video.
-
-Merges chapters, videos and metadata together to place chapters inside
-of videos.
-
-
-# Requirements
-
-For using Video merge:
-
-1) Download `ffmpeg` [here](https://ffmpeg.org/download.html)
-2) (Optional): Add ffmpeg directory to your computers environment variables
-2) Place the `video-merge.exe` alongside your `.mp4` files.
-4) Move the folder holding your chapters files to the same directory
-5) Run `video-merge.exe`
-
-
 ### [Chapters](https://github.com/heyjp/bjj-tools/tree/main/chapters)
 
 A collection of scripts for collecting timestamps.
@@ -71,7 +47,32 @@ specific product entered by the user.
 `$ main search <product url>`
 
 
+### [Video_Merge](https://github.com/Heyjp/bjj-tools/tree/main/video_merge)
+
+Utilizes the `extractor` module alongside ffmpeg to extract the metadata
+from the given video file location, updates the metadata to include
+timestamps from the given chapters folder and then combines the updated
+metadata file with chapters and merges with the video file to create a
+brand new video.
+
+Merges chapters, videos and metadata together to place chapters inside
+of videos.
+
+
+### Requirements
+
+For using Video merge:
+
+1) Download `ffmpeg` [here](https://ffmpeg.org/download.html)
+2) (Optional): Add ffmpeg directory to your computers environment variables
+2) Place the `video-merge.exe` alongside your `.mp4` files.
+4) Move the folder holding your chapters files to the same directory
+5) Run `video-merge.exe`
+
+
 ### Bugs
 
 If you find an issue or instance where the scripts do not work or would
 like to suggest a feature feel free to create an issue.
+
+
