@@ -1,4 +1,4 @@
-package fanatics_crawler
+package crawler
 
 import (
 	"bufio"

@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	c "github.com/heyjp/bjj-tools/fanatics_crawler"
+	c "github.com/heyjp/bjj-tools/crawler"
 )
 
 func main() {

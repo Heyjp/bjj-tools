@@ -5,8 +5,8 @@ import (
 	"log"
 	"os"
 
+	p "github.com/heyjp/bjj-tools/crawler"
 	c "github.com/heyjp/bjj-tools/fanatics_chapters"
-	p "github.com/heyjp/bjj-tools/fanatics_crawler"
 )
 
 func main() {
