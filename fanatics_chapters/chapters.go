@@ -1,4 +1,4 @@
-package fanatics_chapters
+package chapters
 
 import (
 	"bufio"
