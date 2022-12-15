@@ -1,4 +1,4 @@
-module github.com/heyjp/bjj-tools/chapters
+module github.com/heyjp/bjj-tools/timestamps
 
 go 1.18
 

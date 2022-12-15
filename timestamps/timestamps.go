@@ -1,4 +1,4 @@
-package chapters
+package timestamps
 
 import (
 	"bufio"

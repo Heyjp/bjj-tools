@@ -1,4 +1,4 @@
-module github.com/heyjp/bjj-tools/fanatics_search
+module github.com/heyjp/bjj-tools/search
 
 go 1.18
 

@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	c "github.com/heyjp/bjj-tools/chapters"
+	c "github.com/heyjp/bjj-tools/timestamps"
 )
 
 func main() {

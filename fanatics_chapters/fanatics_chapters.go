@@ -6,9 +6,9 @@ import (
 	"os"
 	"strings"
 
-	c "github.com/heyjp/bjj-tools/chapters"
 	d "github.com/heyjp/bjj-tools/dircheck"
 	s "github.com/heyjp/bjj-tools/search"
+	c "github.com/heyjp/bjj-tools/timestamps"
 )
 
 // Reads a fanatics-products.txt file and extracting the product

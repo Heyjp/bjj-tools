@@ -1,4 +1,4 @@
-module github.com/heyjp/bjj-tools/fanatics_crawler
+module github.com/heyjp/bjj-tools/crawler
 
 go 1.18
 
