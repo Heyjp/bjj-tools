@@ -27,6 +27,8 @@ github.com/heyjp/bjj-tools/chapters v0.0.0-20221207162820-813b9714bb95 h1:aycVKo
 github.com/heyjp/bjj-tools/chapters v0.0.0-20221207162820-813b9714bb95/go.mod h1:Yl8R5eRec9cTmI14v51/q4IP4r3VzvXK/oLlcFcu+jY=
 github.com/heyjp/bjj-tools/chapters v0.0.0-20221209153059-4993aede89cc h1:BB+6Y8o/pjIyB9Xe88kaNn9WjwA9E7cosmaH17RpkOM=
 github.com/heyjp/bjj-tools/chapters v0.0.0-20221209153059-4993aede89cc/go.mod h1:Ww2lOUy1UV4oguuuyBGWj/aDQIcNkKeu/GRGEm0s/OI=
+github.com/heyjp/bjj-tools/crawler v0.0.0-20221215152427-ad84c87e0f46 h1:YmOxfIXn3sK/UnmPYwjs1It6b7az2fGetnFjL8ka2Pw=
+github.com/heyjp/bjj-tools/crawler v0.0.0-20221215152427-ad84c87e0f46/go.mod h1:EG7u58CLsYbLIi1XnJc+SBsye5MMifiBIW9kObNVOjU=
 github.com/heyjp/bjj-tools/dircheck v0.0.0-20221201200419-362005314a6b h1:JE0bMP0pUiKNdbHOCTWPkpA9LlZIp8Ig0fLlBiO/VO4=
 github.com/heyjp/bjj-tools/dircheck v0.0.0-20221201200419-362005314a6b/go.mod h1:LygmQNwMy9rp60FZ5A+9+pJ+uC0DQP+/tgSN4AspeJc=
 github.com/heyjp/bjj-tools/dircheck v0.0.0-20221201221549-98c8127b7e49 h1:PPTiTgI5AO9wY11yrG6q39vsIR0GQIVTxEyGmmWDCdE=
@@ -53,6 +55,8 @@ github.com/heyjp/bjj-tools/dircheck v0.0.0-20221207162820-813b9714bb95 h1:7fAaiq
 github.com/heyjp/bjj-tools/dircheck v0.0.0-20221207162820-813b9714bb95/go.mod h1:LygmQNwMy9rp60FZ5A+9+pJ+uC0DQP+/tgSN4AspeJc=
 github.com/heyjp/bjj-tools/dircheck v0.0.0-20221209153059-4993aede89cc h1:jpTBSCKevJqKEjS62wAFL2Qid3asTxGTXnKkcOE82cM=
 github.com/heyjp/bjj-tools/dircheck v0.0.0-20221209153059-4993aede89cc/go.mod h1:LygmQNwMy9rp60FZ5A+9+pJ+uC0DQP+/tgSN4AspeJc=
+github.com/heyjp/bjj-tools/dircheck v0.0.0-20221215152427-ad84c87e0f46 h1:FjmpCO3/lHpwT4WDo0w6XL/3h0PhVTn7ZVVdZI5py2w=
+github.com/heyjp/bjj-tools/dircheck v0.0.0-20221215152427-ad84c87e0f46/go.mod h1:LygmQNwMy9rp60FZ5A+9+pJ+uC0DQP+/tgSN4AspeJc=
 github.com/heyjp/bjj-tools/fanatics_crawler v0.0.0-20221201200419-362005314a6b h1:2L7ZZWg35ZzdBqset6qV9LpJCb/PYuZx0mNrhd7uUvY=
 github.com/heyjp/bjj-tools/fanatics_crawler v0.0.0-20221201200419-362005314a6b/go.mod h1:dgbUwaf67h1pI0cwtkyaJMvfKEQIkIEkzKQBUk39wwM=
 github.com/heyjp/bjj-tools/fanatics_crawler v0.0.0-20221201221549-98c8127b7e49 h1:5JgdDBCCZza4N63GxshfisLhEjlrVDDnu8yCZRrxSiI=
@@ -105,6 +109,10 @@ github.com/heyjp/bjj-tools/fanatics_search v0.0.0-20221207162820-813b9714bb95 h1
 github.com/heyjp/bjj-tools/fanatics_search v0.0.0-20221207162820-813b9714bb95/go.mod h1:a2T7srvialK9utU1QsZqhqlPweTtcR3WarWIGhEwy34=
 github.com/heyjp/bjj-tools/fanatics_search v0.0.0-20221209153059-4993aede89cc h1:SjbN9ngiyOo8enNaJPdrOZH/eSs0UPBCJ9uOxnpP2hA=
 github.com/heyjp/bjj-tools/fanatics_search v0.0.0-20221209153059-4993aede89cc/go.mod h1:a2T7srvialK9utU1QsZqhqlPweTtcR3WarWIGhEwy34=
+github.com/heyjp/bjj-tools/search v0.0.0-20221215152427-ad84c87e0f46 h1:WRLTHKDRvNZkRxTZwdl072XegDid0FpKf2q4nM1wcq0=
+github.com/heyjp/bjj-tools/search v0.0.0-20221215152427-ad84c87e0f46/go.mod h1:ossskttC1UbwMugH557rALenm/6KnYt4St3oDZqF2cg=
+github.com/heyjp/bjj-tools/timestamps v0.0.0-20221215152427-ad84c87e0f46 h1:cjCDLtG48oNbtebFKQpLs8+KhN3DLc65RXMFxItrU/w=
+github.com/heyjp/bjj-tools/timestamps v0.0.0-20221215152427-ad84c87e0f46/go.mod h1:8NJHHnunUR7rC7Sf3lFMocWIaWPD9BEeuLs9NG1OME8=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
