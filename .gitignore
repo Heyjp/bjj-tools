@@ -19,7 +19,7 @@
 go.work
 
 # Individual folders
-fanatics_crawler/*.txt
+crawler/*.txt
 /search/chapters/
  
 # Include
