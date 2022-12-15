@@ -8,7 +8,7 @@ import (
 
 	c "github.com/heyjp/bjj-tools/chapters"
 	d "github.com/heyjp/bjj-tools/dircheck"
-	s "github.com/heyjp/bjj-tools/fanatics_search"
+	s "github.com/heyjp/bjj-tools/search"
 )
 
 // Reads a fanatics-products.txt file and extracting the product

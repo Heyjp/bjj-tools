@@ -1,4 +1,4 @@
-package fanatics_search
+package search
 
 import (
 	"fmt"
@@ -17,7 +17,7 @@ var site = "https://bjjfanatics.com/products/"
 func Search(product string, folder string) {
 
 	if product == "" {
-		log.Fatal("fanatics_search <product> <folder>")
+		log.Fatal("search <product> <folder>")
 	}
 
 	if len(folder) < 1 {

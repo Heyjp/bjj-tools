@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	f "github.com/heyjp/bjj-tools/fanatics_search"
+	f "github.com/heyjp/bjj-tools/search"
 )
 
 func main() {
