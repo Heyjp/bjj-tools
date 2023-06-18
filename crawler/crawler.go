@@ -57,7 +57,7 @@ func Crawl(siteKey string) {
 	maxPages, err := strconv.Atoi(spans[len(spans)-2].Text())
 
 	if site == sites["new"] {
-		maxPages = 2
+		maxPages = 10
 	}
 
 	if err != nil {

@@ -10,6 +10,13 @@ watching offline or on desktop is a worse experience.
 between points in the video quickly. These scripts are designed to
 create / merge timestamps with their related videos to help the user have a better learning experience.
 
+### Building the app
+
+`chapters` is the entrypoint for the chapter retrieval part of the
+application and `video_merge` for the video manipulation part.
+
+`GOOS=<operating system> go build cmd/chapters/main.go`
+
 
 ### [Chapters](https://github.com/heyjp/bjj-tools/tree/main/chapters)
 
